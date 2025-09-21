@@ -8,6 +8,7 @@ Then open terminal and run following command to setup
 the micromamba environment for qgis
 cd drive/MyDrive/qgis_copilot
 chmod +x setup.sh
+./setup.sh
 
 How to find elev_bands in dem:
 chmod +x run_elev_bands.sh
