@@ -1,4 +1,7 @@
 # QGIS ANGEL
+An Agent (MVP) that use Qwen 7b awq model to take user/client input and perform analysis to convert raster elevation dem file into vector elevation bands. 
+
+Steps for setup and make use of it:
 
 Copy all content of this repo to a google drive in a folder at root named: qgis_copilot
 
