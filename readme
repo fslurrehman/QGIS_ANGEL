@@ -1,0 +1,14 @@
+Open New Colab Notebook
+In the first cell paste this code:
+from google.colab import drive
+drive.mount('/content/drive')
+
+Run it. When it ask for authorization, authorize your account.
+Then open terminal and run following command to setup
+the micromamba environment for qgis
+cd drive/MyDrive/qgis_copilot
+chmod +x setup.sh
+
+How to find elev_bands in dem:
+chmod +x run_elev_bands.sh
+./run_elev_bands.sh proj/data/dem_filled.tif proj/data/elev_bands_5m.gpkg 5
