@@ -134,8 +134,6 @@ Once the model server is running, return to your Colab notebook and execute the 
 
 ## 📌 Notes
 
-* Folders on GitHub are **virtual**: empty folders are ignored unless they contain at least one file.
-  If you want to keep an empty folder, add a `.gitkeep` file.
 * Make sure you run terminal commands in **Colab Terminal**, not in the notebook cells (unless explicitly shown in `python` code blocks).
 
 ---
