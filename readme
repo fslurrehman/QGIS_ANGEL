@@ -1,4 +1,6 @@
-Open New Colab Notebook
+Open New Colab Notebook: https://drive.google.com/file/d/1K0jOKwuE30mBLpi6rJlv_V0Jl0xG3hIP/view?usp=sharing
+A copy is also available in repo which you can upload to google colab
+
 In the first cell paste this code:
 from google.colab import drive
 drive.mount('/content/drive')
@@ -13,3 +15,43 @@ chmod +x setup.sh
 How to find elev_bands in dem:
 chmod +x run_elev_bands.sh
 ./run_elev_bands.sh proj/data/dem_filled.tif proj/data/elev_bands_5m.gpkg 5
+
+
+Steps for setting up LLM model.
+Note: All code are needed to be executed in terminal of colab
+
+1. Open terminal and run your codes listed below there:
+
+# 0) In Colab or your terminal: point to micromamba
+export PATH=/opt/mamba/bin:$PATH
+
+# 1) Create a clean env (example: Python 3.10)
+micromamba create -y -n qgis310 python=3.10
+micromamba run -n qgis310 python -V
+
+# 2) Install PyTorch that matches your CUDA (example: CUDA 12.x wheels)
+# Use the command from https://pytorch.org/get-started/locally/
+micromamba run -n qgis310 pip install torch --index-url https://download.pytorch.org/whl/cu121
+
+# 3) Install vLLM matched to that Torch/CUDA, plus the rest
+micromamba run -n qgis310 pip install vllm transformers accelerate huggingface_hub openai
+
+
+#4) Download the model:
+micromamba run -n qgis310 python - <<'PY'
+from huggingface_hub import snapshot_download
+print("⬇️  Qwen2-7B-Instruct-AWQ …")
+p = snapshot_download("Qwen/Qwen2-7B-Instruct-AWQ",
+                      local_dir="./models/qwen2-7b-instruct-awq")
+print("MODEL_DIR="+p)
+PY
+
+
+#5) Run server in the terminal:
+MODEL_DIR="./models/qwen2-7b-instruct-awq"
+micromamba run -n qgis310 python -m vllm.entrypoints.openai.api_server \
+  --model "$MODEL_DIR" --quantization awq \
+  --host 127.0.0.1 --port 8000 --dtype auto --max-model-len 8192
+
+  
+#6) Then run rest of the Notebook cells. 
