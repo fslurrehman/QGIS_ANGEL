@@ -11,7 +11,7 @@ An **MVP Agent** that uses the **Qwen 7B AWQ model** to take user/client input a
 
 ```
 
-qgis\_copilot
+qgis_copilot
 
 ````
 
