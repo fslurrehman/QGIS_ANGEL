@@ -1,6 +1,6 @@
 # 🌍 QGIS ANGEL
 
-An **MVP Agent** that uses the **Qwen 7B AWQ model** to take user/client input and perform analysis on raster elevation DEM files, converting them into vector elevation bands.
+An **MVP Agent** that uses the **Qwen 7B AWQ model** to take user/client input and perform analysis on raster elevation DEM files, converting them into vector elevation bands. It tries to automate flood rish assessment for given region. A sample project in QGIS can be found in: https://drive.google.com/drive/folders/1mAEkFE-DC45ZgH_66xaOzWKbyLqovp4t?usp=drive_link
 
 ---
 
